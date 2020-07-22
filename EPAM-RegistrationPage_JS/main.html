@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EPAM REGISTRATION FORM - ROHIT SHAW</title>
+    <script type="text/javascript">
+
+    function submitAction() {
+    	var outputElement = document.getElementById("print_out_area");
+    	var name = document.getElementById('name').value;
+    	let phone = document.getElementById('tel').value;
+    	let email = document.getElementById('email').value;
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        var count=0;
+        var letters = /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/
+
+        if(name.length<2 || name == null || !name.match(letters)){
+            alert("Correct the Name");
+            count=1;
+        }
+
+        if(phone.length != 10){
+            alert("Correct the Phone");
+            count=1;
+        }
+
+        if(!email.match(mailformat) || email == null){
+            alert("Correct the Email");
+            count=1;
+        }
+
+
+        if(count==0){
+            outputElement.innerHTML = "Name : " + name + "<br>" + "Phone : " + phone + "<br>" + "Email : " + email ;
+        }
+    }
+    </script>
+</head>
+<body>
+	<div>
+		<fieldset>
+        	<legend>Fill In Information for Registration :</legend>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" placeholder="John Cena"><br>
+            <br>
+            <label for="tel">Phone:</label><br>
+            <input type="tel" id="tel" name="tel" placeholder="1234567891"><br>
+            <br>
+            <label for="email">Email ID:</label><br>
+            <input type="email" id="email" name="email" placeholder="abc@gmail.com"><br>
+            <br>
+			<button onclick="submitAction()">Register</button>
+        </fieldset>
+	</div>
+	<br>
+	<hr>
+	<div>
+    	<p id="print_out_area">Display inputs here :</p>
+    </div>
+    <br>
+</body>
+</html>
